@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import MyEditor from './draft';
+import Editor from './draft';
 
 
 function App() {
@@ -11,7 +10,7 @@ function App() {
         <input type="text" placeholder="essay1" className='ess1'></input>
       </div> */}
       <div className='draftArea'>
-          <MyEditor />
+          <Editor />
       </div>
     </div>
   );

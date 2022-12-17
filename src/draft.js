@@ -1,74 +1,82 @@
-import React from 'react';
-import {convertToRaw, EditorState} from 'draft-js';
-import { Editor, EditorProvider } from "draft-js-rte";
-import 'draft-js/dist/Draft.css';
-
-import EditorToolbar from './EditorToolbar';
-import ButtonGroup from './ButtonGroup';
-import InlineToggleButton from './Buttons';
-import { customStyleMaps } from './customStyleMaps';
+import { $getRoot, $getSelection } from 'lexical';
+import { useEffect } from 'react';
 
 
-export default function MyEditor() {
-  const [titleState, setTitleState] = React.useState(
-    () => EditorState.createEmpty(),
-  );
-  const [editorState, setEditorState] = React.useState(
-    () => EditorState.createEmpty(),
-  );
-  const editor = React.useRef(null);
-  const title = React.useRef(null);
+import {LexicalComposer} from '@lexical/react/LexicalComposer';
+import {PlainTextPlugin} from '@lexical/react/LexicalPlainTextPlugin';
+import {ContentEditable} from '@lexical/react/LexicalContentEditable';
+import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
+import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
+import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
+import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 
-  React.useEffect(() => {
-    if (editor) {
-      editor.current.focus();
-    }
-  }, []);
+const theme = {
+  ltr: 'ltr',
+  rtl: 'rtl',
+  placeholder: 'editor-placeholder',
+  paragraph: 'editor-paragraph',
+}
+
+// When the editor changes, you can get notified via the
+// LexicalOnChangePlugin!
+function onChange(editorState) {
+  editorState.read(() => {
+    // Read the contents of the EditorState here.
+    const root = $getRoot();
+    const selection = $getSelection();
+
+    console.log(root, selection);
+  });
+}
+
+// Lexical React plugins are React components, which makes them
+// highly composable. Furthermore, you can lazy load plugins if
+// desired, so you don't pay the cost for plugins until you
+// actually use them.
+function MyCustomAutoFocusPlugin() {
+  const [editor] = useLexicalComposerContext();
+
+  useEffect(() => {
+    // Focus the editor when the effect fires!
+    editor.focus();
+  }, [editor]);
+
+  return null;
+}
+
+// Catch any errors that occur during Lexical updates and log them
+// or throw them as needed. If you don't throw them, Lexical will
+// try to recover gracefully without losing user data.
+function onError(error) {
+  console.error(error);
+}
 
 
-  const handleSubmit = () => {
-    console.log(convertToRaw(editorState.getCurrentContent()));
-  }
+
+
+export default function Editor() {
+  const initialConfig = {
+    namespace: 'MyEditor', 
+    theme,
+    onError,
+  };
 
   return (
-    <EditorProvider
-      customStyleMaps={customStyleMaps}
-      editorState={editorState}
-      onChange={setEditorState}
-    >
-        <EditorToolbar>
-          <ButtonGroup label="Font Family">
-            <InlineToggleButton value="FONT_FAMILY_ROBOTO">
-               Roboto
-            </InlineToggleButton>
-            <InlineToggleButton value="FONT_FAMILY_GEORGIA">
-               Georgia
-            </InlineToggleButton>
-            <InlineToggleButton value="FONT_FAMILY_INCONSOLATA">
-               Inconsolata
-            </InlineToggleButton>
-          </ButtonGroup>
-          <ButtonGroup label="Font Size">
-            <InlineToggleButton value="FONT_SIZE_SMALL">
-              Small
-            </InlineToggleButton>
-            <InlineToggleButton value="FONT_SIZE_LARGE">
-              Large
-            </InlineToggleButton>
-          </ButtonGroup>
-        </EditorToolbar>
-        <div className='title'>
-            <Editor 
-                ref={editor}
-                placeholder="title"    
-            />            
-        </div>
-        <div className='save_button'>
-            <button onClick={handleSubmit}>save</button>    
-        </div>      
-        
-    </EditorProvider>
-  )
+    <LexicalComposer initialConfig={initialConfig}>
+      <div className='editor-container'>
+        <PlainTextPlugin
+          contentEditable={<ContentEditable />}
+          placeholder={<div>Enter some text...</div>}
+          ErrorBoundary={LexicalErrorBoundary}
+        />
+        <OnChangePlugin onChange={onChange} />
+        <HistoryPlugin />
+        <MyCustomAutoFocusPlugin />
+      </div>
+    </LexicalComposer>
+  );
+
+
 }
 
 
