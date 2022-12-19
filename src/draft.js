@@ -2,6 +2,7 @@ import { $getRoot, $getSelection } from 'lexical';
 import { useEffect } from 'react';
 
 import { theme } from './theme';
+import ToolbarPlugin from './plugins/Toolbar';
 
 import {LexicalComposer} from '@lexical/react/LexicalComposer';
 import {PlainTextPlugin} from '@lexical/react/LexicalPlainTextPlugin';
@@ -62,7 +63,8 @@ export default function Editor() {
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <div className="editor-container">
-        <PlainTextPlugin
+      <ToolbarPlugin />
+        <RichTextPlugin
           contentEditable={<ContentEditable className='editor-input'/>}
           placeholder={<Placeholder />}
       />
