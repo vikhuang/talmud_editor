@@ -7,10 +7,14 @@ function App() {
   return (
     <div className="App">
       <div className='Header'>
-        <span className='Header_loveSec'>
+        <p className='Header_loveSec'>
           For Michael
-        </span>
-        <p className='Header_title'>Tamud Layout Generator</p>
+        </p>
+        <div className='Header_title'>
+          Talmud 
+          <div className='Header_title_sub'> תַּלְמוּד‎ </div>
+          Layout Generator
+        </div>
       </div>
       <div className='draftArea'>
           <Editor />
