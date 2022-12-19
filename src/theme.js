@@ -1,4 +1,4 @@
-export const Theme = {
+export const theme = {
   ltr: "ltr",
   rtl: "rtl",
   placeholder: "editor-placeholder",

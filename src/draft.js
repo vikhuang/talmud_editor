@@ -1,6 +1,7 @@
 import { $getRoot, $getSelection } from 'lexical';
 import { useEffect } from 'react';
 
+import { theme } from './theme';
 
 import {LexicalComposer} from '@lexical/react/LexicalComposer';
 import {PlainTextPlugin} from '@lexical/react/LexicalPlainTextPlugin';
@@ -13,12 +14,6 @@ import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 
 
 
-const theme = {
-  ltr: 'ltr',
-  rtl: 'rtl',
-  placeholder: 'editor-placeholder',
-  paragraph: 'editor-paragraph',
-}
 
 // When the editor changes, you can get notified via the
 // LexicalOnChangePlugin!
