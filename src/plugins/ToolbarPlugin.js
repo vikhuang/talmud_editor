@@ -559,6 +559,7 @@ export default function ToolbarPlugin() {
         <i className="format redo" />
       </button>
       <Divider />
+      
       {supportedBlockTypes.has(blockType) && (
         <>
           <button
