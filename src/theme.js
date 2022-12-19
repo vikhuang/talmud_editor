@@ -66,4 +66,4 @@ export const theme = {
   }
 };
 
-export default exampleTheme;
+
