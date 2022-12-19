@@ -10,6 +10,8 @@ import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
 import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 
+
+
 const theme = {
   ltr: 'ltr',
   rtl: 'rtl',
@@ -63,21 +65,23 @@ export default function Editor() {
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <div className='editor-container'>
+      <div className="editor-container">
         <PlainTextPlugin
-          contentEditable={<ContentEditable />}
-          placeholder={<div>Enter some text...</div>}
-          ErrorBoundary={LexicalErrorBoundary}
-        />
-        <OnChangePlugin onChange={onChange} />
-        <HistoryPlugin />
-        <MyCustomAutoFocusPlugin />
+          contentEditable={<ContentEditable className='editor-input'/>}
+          placeholder={<Placeholder />}
+      />
       </div>
+      <OnChangePlugin onChange={onChange} />
+      <HistoryPlugin />
+      <MyCustomAutoFocusPlugin />
     </LexicalComposer>
   );
-
-
 }
 
-
-
+function Placeholder() {
+  return (
+    <div className="editor-placeholder">
+      Play around with the text...
+    </div>
+  );
+}
