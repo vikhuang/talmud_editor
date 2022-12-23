@@ -52,44 +52,80 @@
 }
 
 .essay1 {
-  font-size: 4px;
-  float: left;
-  margin: 40px;
-  margin-top: 120px;
-  width: 250px;
-  display: inline-block;
-  left: 5rem;
-  shape-outside: inset(80px 0 0 0);  
-  padding-left: 1rem;
- 
+    position: absolute;
+    top: calc(5rem + 12px + 20%);
+    left: 38%;
+    width: 25%;
+    font-size: 9px;
+    z-index: 2;
+  
 }
 
-.essay1_wrapper {
-  /* float: left;
-  margin: 32px;
-  margin-top: 200px;
-  width: 700px; */
-  display: inline-block;
-  /* position: relative; */
+.essay_wrapper_right {
+  float: right;
+  position: relative;
+  
   /* shape-outside: inset(200px 10px 10px 10px); */
   
 }
 
-.essay2 {
-  width: 550px;
-  display: inline-block;
-  font-size: 0.3rem;
-  padding-left: 1rem;
-  margin-top: 5rem;
-  text-align: left;
-}
-
 .essay3 {
   display: inline-block;
-  width: 400px;
-  font-size: 0.3rem;
+  width: 250px;
+  font-size: 9px;
   color: goldenrod;
   text-align: left;
+  margin: 8px;
+  padding: 12px;
+}
+
+.essay3_block_left {
+  width: 50%;
+  height: 500px;
+  margin: 12px 12px 12px 0;
+  background-color: lightgray;
+  float: left;  
+  shape-outside: inset(35% 0 0 0);
+  clip-path: inset(35% 0 0 0);
+}
+
+.essay3_block_right {
+  width: 50%;
+  height: 500px;
+  margin: 12px 0 12px 12px; 
+  background-color: lightgray;
+  float: right;  
+  shape-outside: inset(35% 0 0 0);
+  clip-path: inset(35% 0 0 0);
+}
+
+.essay4 {
+  position: relative;
+  display: inline-block;
+  width: 500px;
+  font-size: 9px;
+
+  margin: 16px;
+  
+}
+
+.second_wrapper {
+  position: relative;
+  display: inline;
+  float: right;
+  width: fit-content;
+  max-height: 700px;
+  margin-top: 8rem;
+  shape-outside: inset(9rem 0 0 0);
+
+}
+
+.third_wrapper {
+  position: relative;
+  display: inline;
+  width: fit-content;
+  margin: 1rem;
+  
 }
 
 
