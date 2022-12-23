@@ -1,22 +1,29 @@
-.App {
+
+
+.draftArea {
+  position: absolute;
+  display: inline-block;
   text-align: center;
+  margin: auto 4px;
+  min-width: 800px;
+  inset: 8px;
+  visibility: hidden;
 }
 
-input {
-  border: 0px solid ;
-  font-size: 16px;
-  position: relative;
-  width: 70%;
-  margin: 5rem auto;
-  top: 5rem;
-}
-
-input:focus {
-  outline: none;
+.preview {
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  margin-top: 5rem;
+  border: #000 solid 1px;
+  visibility: visible;
+  width: 80%;
+  height: 120%;
 }
 
 .Header {
-  position: absolute;
+  position: relative;
+  display: inline-block;
   text-align: left;
   top: 8px;
   left: 8px;
@@ -44,69 +51,47 @@ input:focus {
   color: rgba(0, 0, 0, 0.2);
 }
 
-
-.container {
-  border-top: solid 1px #e2e2e2;
-  margin-top: 8px;
-  padding-top: 18px;
-}
-
-.Toolbar {
-  display: flex;
-  margin: 16px;
-  padding: 16px;
-  border-bottom: solid 1px #e2e2e2;
-}
-
-.ButtonGroup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.ButtonGroup-span {
-  font-size: 12px;
-  color: #c9c9c9;
-  margin-bottom: 2px;
-}
-
-.styleButton {
-  cursor: pointer;
-  padding: 2px;
-  margin-right: 8px;
-  color: #999;
-}
-
-.activeButton {
-  color: #5890ff;
-}
-
-
-
-.title {
-  font-size: 32px;
-  width: 30%;
-  margin: 16px auto;
-  padding: 3rem auto;
-  top: 5rem;
-  background-color: antiquewhite;
-}
-
 .essay1 {
-  font-size: 16px;
-  width: 30%;
-  margin: 16px auto;
-  top: 5rem;
-  background-color: antiquewhite;
+  font-size: 4px;
+  float: left;
+  margin: 40px;
+  margin-top: 120px;
+  width: 250px;
+  display: inline-block;
+  left: 5rem;
+  shape-outside: inset(80px 0 0 0);  
+  padding-left: 1rem;
+ 
 }
 
-
-
-.save_button {
-  bottom: 32px;
+.essay1_wrapper {
+  /* float: left;
+  margin: 32px;
+  margin-top: 200px;
+  width: 700px; */
+  display: inline-block;
+  /* position: relative; */
+  /* shape-outside: inset(200px 10px 10px 10px); */
+  
 }
+
+.essay2 {
+  width: 550px;
+  display: inline-block;
+  font-size: 0.3rem;
+  padding-left: 1rem;
+  margin-top: 5rem;
+  text-align: left;
+}
+
+.essay3 {
+  display: inline-block;
+  width: 400px;
+  font-size: 0.3rem;
+  color: goldenrod;
+  text-align: left;
+}
+
 
 .ltr {
   text-align: left;
@@ -120,7 +105,7 @@ input:focus {
   color: darkgrey;
   overflow: hidden;
   position: absolute;
-  top: 3rem;
+  top: 3.5rem;
   left: 15px;
   user-select: none;
   pointer-events: none;
@@ -135,6 +120,7 @@ input:focus {
   tab-size: 1;
   outline: 0;
   padding: 0px 10px 5px;
+  margin-top: 1rem;
   caret-color: #444;
 }
 
@@ -146,7 +132,9 @@ input:focus {
 
 .editor-container {
   background: #fff;
-  margin: 20px auto 20px auto;
+  top: 8px;
+  display: inline-block;
+  margin: 4px auto 20px auto;
   border-radius: 2px;
   max-width: 600px;
   color: #000;
@@ -155,11 +143,22 @@ input:focus {
   font-weight: 400;
   text-align: left;
   border-radius: 10px;
+ 
+}
+
+.editor-text-essay {
+  float: left;
+  margin: 32px;
+  margin-top: 200px;
+  width: 300px;
+  display: inline-block;
+  shape-outside: inset(200px 10px 10px 10px);
 }
 
 
 .editor-text-bold {
   font-weight: bold;
+  
 }
 
 .editor-text-italic {
