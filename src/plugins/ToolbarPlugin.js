@@ -1,5 +1,5 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
 import {
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
@@ -8,6 +8,9 @@ import {
   SELECTION_CHANGE_COMMAND,
   FORMAT_TEXT_COMMAND,
   FORMAT_ELEMENT_COMMAND,
+  BLUR_COMMAND,
+  FOCUS_COMMAND,
+  COMMAND_PRIORITY_LOW,
   $getSelection,
   $isRangeSelection,
   $createParagraphNode,
@@ -418,6 +421,8 @@ function BlockOptionsDropdownList({
 export default function ToolbarPlugin() {
   const [editor] = useLexicalComposerContext();
   const toolbarRef = useRef(null);
+  const [showToolbar, setShowToolbar] = useState(false);
+
   const [canUndo, setCanUndo] = useState(false);
   const [canRedo, setCanRedo] = useState(false);
   const [blockType, setBlockType] = useState("paragraph");
@@ -433,6 +438,23 @@ export default function ToolbarPlugin() {
   const [isUnderline, setIsUnderline] = useState(false);
   const [isStrikethrough, setIsStrikethrough] = useState(false);
   const [isCode, setIsCode] = useState(false);
+
+  const useEditorFocus = () => {
+    const [hasFocus, setHasFocus] = useState(() => {
+      return (editor.getRootElement() === document.activeElement);
+    });
+    
+    useLayoutEffect(() => {
+      setHasFocus(editor.getRootElement() === document.activeElement);
+      return mergeRegister(
+        editor.registerCommand(FOCUS_COMMAND, () => {setShowToolbar(true)}, COMMAND_PRIORITY_LOW),
+        editor.registerCommand(BLUR_COMMAND, () => {setShowToolbar(false)}, COMMAND_PRIORITY_LOW),
+      );
+    }, [editor]);
+    
+  }
+
+  useEditorFocus();
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -537,7 +559,7 @@ export default function ToolbarPlugin() {
   }, [editor, isLink]);
 
   return (
-    <div className="toolbar" ref={toolbarRef}>
+    <div className="toolbar" ref={toolbarRef} style={{visibility: showToolbar ? 'visible' : 'hidden'}}>
       <button
         disabled={!canUndo}
         onClick={() => {

@@ -1,5 +1,5 @@
 import { $getRoot, $getSelection } from 'lexical';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { theme } from './theme';
 import ToolbarPlugin from './plugins/ToolbarPlugin';
@@ -39,8 +39,11 @@ function onChange(editorState) {
     const selection = $getSelection();
 
     console.log(root, selection);
+
   });
 }
+
+
 
 // Lexical React plugins are React components, which makes them
 // highly composable. Furthermore, you can lazy load plugins if
@@ -51,7 +54,9 @@ function MyCustomAutoFocusPlugin() {
 
   useEffect(() => {
     // Focus the editor when the effect fires!
-    editor.focus();
+    if(editor.focus()) {
+      console.log('yes!');
+    }
   }, [editor]);
 
   return null;
@@ -68,6 +73,10 @@ function onError(error) {
 
 
 export default function Editor() {
+  const initialEditorState = null;
+  const editorStateRef = useRef();
+  const [saveContent, setSaveContent] = useState(null);
+
   const editorConfig = {
     namespace: 'MyEditor', 
     theme: theme,
@@ -87,10 +96,15 @@ export default function Editor() {
   ]
   };
 
+  
+
+
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
-        <ToolbarPlugin />
+        <div className='editor-toolbar'>
+          <ToolbarPlugin />
+        </div>
         <div className="editor-inner">
           <RichTextPlugin
             contentEditable={<ContentEditable className='editor-input'/>}
@@ -100,14 +114,14 @@ export default function Editor() {
           <OnChangePlugin onChange={onChange} />
           {/* <TreeViewPlugin /> */}
           <HistoryPlugin />
-          <MyCustomAutoFocusPlugin />
-          
-          <AutoFocusPlugin />
+          {/* <MyCustomAutoFocusPlugin /> */}
+          {/* <AutoFocusPlugin /> */}
           <ListPlugin />
           <LinkPlugin />
           <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} />
-          <MarkdownShortcutPlugin transformers={TRANSFORMERS} />           
+          <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+            <button onClick={()=>{console.log(editorStateRef.current)}}>console</button>           
         </div>
       </div> 
     </LexicalComposer>
