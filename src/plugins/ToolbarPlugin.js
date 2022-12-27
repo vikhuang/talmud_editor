@@ -43,7 +43,7 @@ import {
   getCodeLanguages
 } from "@lexical/code";
 
-const LowPriority = 1;
+const LowPriority = 3;
 
 const supportedBlockTypes = new Set([
   "paragraph",
@@ -94,7 +94,7 @@ function FloatingLinkEditor({ editor }) {
   const [isEditMode, setEditMode] = useState(false);
   const [lastSelection, setLastSelection] = useState(null);
 
-  const updateLinkEditor = useCallback(() => {
+  const updateLinkEditor = useCallback(() => {   
     const selection = $getSelection();
     if ($isRangeSelection(selection)) {
       const node = getSelectedNode(selection);
@@ -421,6 +421,7 @@ function BlockOptionsDropdownList({
 export default function ToolbarPlugin() {
   const [editor] = useLexicalComposerContext();
   const toolbarRef = useRef(null);
+  const activeElement = document.activeElement;
   const [showToolbar, setShowToolbar] = useState(false);
 
   const [canUndo, setCanUndo] = useState(false);
@@ -449,12 +450,20 @@ export default function ToolbarPlugin() {
       return mergeRegister(
         editor.registerCommand(FOCUS_COMMAND, () => {setShowToolbar(true)}, COMMAND_PRIORITY_LOW),
         editor.registerCommand(BLUR_COMMAND, () => {setShowToolbar(false)}, COMMAND_PRIORITY_LOW),
+        
       );
     }, [editor]);
     
   }
 
+  if(activeElement.className === 'toolbar') {
+    console.log('TOOLBAR!');
+  }
+  
   useEditorFocus();
+
+
+  
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();

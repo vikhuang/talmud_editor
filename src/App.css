@@ -151,7 +151,7 @@
   color: darkgrey;
   overflow: hidden;
   position: absolute;
-  top: 3.5rem;
+  top: 0px;
   left: 15px;
   user-select: none;
   pointer-events: none;
@@ -196,7 +196,7 @@
 .editor-toolbar {
   position: absolute;
   z-index: 2;
-  top: -5rem;
+  top: 5rem;
 }
 
 .editor-text-essay {
@@ -471,8 +471,8 @@ pre::-webkit-scrollbar-thumb {
   margin-bottom: 1px;
   background: #fff;
   padding: 4px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border: 0.5px grey solid;
+  border-radius: 10px;
   vertical-align: middle;
 }
 

@@ -43,6 +43,29 @@ function onChange(editorState) {
   });
 }
 
+function SaveContentButton({editable = true}) {
+  const [editor] =  useLexicalComposerContext();
+  const word = editable.toString();
+  const onEdit = editor.isEditable();
+  useEffect(() => {
+      console.log(editable);
+  }, [])
+  
+  return(
+    <>
+      <button onClick={() => {editor.setEditable(false)}}>So False</button>
+      <button onClick={() => {console.log(editor.isEditable())}}>Now {word}</button>
+      <button onClick={() => {editor.setEditable(true)}}>So True</button>
+    </>
+  )
+}
+
+function BeEditable(editable) {
+  const [editor] =  useLexicalComposerContext();
+  if (!editor.isEditable()) {
+    return editor.setEditable(editable);
+  } else { return null }
+}
 
 
 // Lexical React plugins are React components, which makes them
@@ -72,14 +95,18 @@ function onError(error) {
 
 
 
-export default function Editor() {
+export default function Editor(props) {
   const initialEditorState = null;
   const editorStateRef = useRef();
   const [saveContent, setSaveContent] = useState(null);
+  const [editable, setEditable] = useState(true);
+
+  const placeholder = props.essayNo;
 
   const editorConfig = {
     namespace: 'MyEditor', 
     theme: theme,
+    editable: editable,
     onError,
     nodes: [
       HeadingNode,
@@ -96,9 +123,6 @@ export default function Editor() {
   ]
   };
 
-  
-
-
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
@@ -107,8 +131,8 @@ export default function Editor() {
         </div>
         <div className="editor-inner">
           <RichTextPlugin
-            contentEditable={<ContentEditable className='editor-input'/>}
-            placeholder={<Placeholder />}
+            contentEditable={<ContentEditable className='editor-input' />}
+            placeholder={<Placeholder essayNo={placeholder}/>}
             ErrorBoundary={LexicalErrorBoundary}
           /> 
           <OnChangePlugin onChange={onChange} />
@@ -121,17 +145,19 @@ export default function Editor() {
           <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
-            <button onClick={()=>{console.log(editorStateRef.current)}}>console</button>           
+            {/* <SaveContentButton editable={editable}/>
+            <button onClick={()=>{setEditable(true)}}>parent!</button> */}
         </div>
       </div> 
     </LexicalComposer>
   );
 }
 
-function Placeholder() {
+function Placeholder(props) {
   return (
     <div className="editor-placeholder">
-      Play around with the text...
+      
+      {props.essayNo}
     </div>
   );
 }
