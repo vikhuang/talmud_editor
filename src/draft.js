@@ -72,15 +72,13 @@ function BeEditable(editable) {
 // highly composable. Furthermore, you can lazy load plugins if
 // desired, so you don't pay the cost for plugins until you
 // actually use them.
-function MyCustomAutoFocusPlugin() {
+function MyCustomAutoFocusPlugin(props) {
   const [editor] = useLexicalComposerContext();
 
   useEffect(() => {
     // Focus the editor when the effect fires!
-    if(editor.focus()) {
-      console.log('yes!');
-    }
-  }, [editor]);
+    if(props.onFocused) { editor.focus(); }
+  }, [props.onFocused, editor]);
 
   return null;
 }
@@ -96,10 +94,10 @@ function onError(error) {
 
 
 export default function Editor(props) {
-  const initialEditorState = null;
-  const editorStateRef = useRef();
+  
   const [saveContent, setSaveContent] = useState(null);
   const [editable, setEditable] = useState(true);
+  const onFocused = props.onFocused;
 
   const placeholder = props.essayNo;
 
@@ -138,7 +136,7 @@ export default function Editor(props) {
           <OnChangePlugin onChange={onChange} />
           {/* <TreeViewPlugin /> */}
           <HistoryPlugin />
-          {/* <MyCustomAutoFocusPlugin /> */}
+          <MyCustomAutoFocusPlugin onFocused={onFocused}/>
           {/* <AutoFocusPlugin /> */}
           <ListPlugin />
           <LinkPlugin />

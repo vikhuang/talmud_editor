@@ -21,6 +21,12 @@
   height: 120%;  
 }
 
+.essay-selector {
+  position: relative;
+  height: 18px;
+  width: 18px;
+}
+
 .Header {
   position: relative;
   display: inline-block;
@@ -102,10 +108,10 @@
 .essay4 {
   position: relative;
   display: inline-block;
-  width: 500px;
-  font-size: 9px;
-
+  width: fit-content;
+  max-width: 500px;
   margin: 16px;
+  vertical-align: top;
   
 }
 
@@ -132,9 +138,10 @@
 
 .third_wrapper {
   position: relative;
-  display: inline;
+  display: inline-block;
   width: fit-content;
   margin: 1rem;
+  
   
 }
 
@@ -159,7 +166,7 @@
 
 .editor-input {
   min-height: 150px;
-  resize: none;
+  /* resize: none; */
   font-size: 9px;
   caret-color: rgb(5, 5, 5);
   position: relative;
@@ -177,7 +184,7 @@
 
 
 .editor-container {
-  background: #fff;
+  /* background: #fff; */
   /* top: 8px; */
   /* display: inline-block; */
   /* margin: 4px auto 20px auto; */
@@ -473,7 +480,15 @@ pre::-webkit-scrollbar-thumb {
   padding: 4px;
   border: 0.5px grey solid;
   border-radius: 10px;
+  width: fit-content;
   vertical-align: middle;
+}
+
+.toolbar-info {
+  display: flex;
+  line-height: normal;
+  padding: 4px;
+  font-size: 0.5rem;
 }
 
 .toolbar button.toolbar-item {
@@ -767,7 +782,8 @@ i.chevron-down {
   text-decoration: underline;
 }
 
-.link-editor .button {
+.link-editor .button,
+.essay-selector .button {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -777,7 +793,8 @@ i.chevron-down {
   margin: 0 2px;
 }
 
-.link-editor .button.hovered {
+.link-editor .button.hovered,
+.essay-selector .button.button.hovered {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -785,7 +802,8 @@ i.chevron-down {
 }
 
 .link-editor .button i,
-.actions i {
+.actions i,
+.essay-selector i {
   background-size: contain;
   display: inline-block;
   height: 20px;
@@ -871,4 +889,28 @@ i.right-align {
 
 i.justify-align {
   background-image: url(../public/images/icons/justify.svg);
+}
+
+i.essay1-icon {
+  background-image: url(../public/images/icons/1-square-fill.svg);
+}
+
+i.essay2-icon {
+  background-image: url(../public/images/icons/2-square-fill.svg);
+}
+
+i.essay3-icon {
+  background-image: url(../public/images/icons/3-square-fill.svg);
+}
+
+i.essay4-icon {
+  background-image: url(../public/images/icons/4-square-fill.svg);
+}
+
+i.essay5-icon {
+  background-image: url(../public/images/icons/5-square-fill.svg);
+}
+
+i.essay6-icon {
+  background-image: url(../public/images/icons/6-square-fill.svg);
 }
