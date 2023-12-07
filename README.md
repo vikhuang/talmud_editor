@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Talmud Layout Simulator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+The Talmud Layout Simulator is an advanced software tool designed to replicate the unique from-the-inside-out page layout of the Talmud, integrated with modern text editor functionalities. This tool is particularly useful for students, educators, and researchers interested in Talmudic studies, offering a blend of traditional and contemporary textual presentation.
 
-## Available Scripts
+## Features
+- **Traditional Talmud Layout**: Emulates the Talmud's distinctive inside-to-outside page layout, familiar to students and scholars of the text.
+- **Modern Editing Capabilities**: Includes modern text editor features such as annotations, text style editing (bold, italic, etc.), headings, hyperlinks, and code blocks.
+- **Paragraph-focused Editing**: To optimize performance, the software allows editing one paragraph at a time.
+- **Section Selector**: Utilize the section selector to choose the paragraph you wish to edit. The software locks other paragraphs to streamline focus and efficiency.
+- **Device Compatibility**: For optimal experience, use a device with a browser width of at least 1330px. If you lack compatible devices, please contact the developer.
+- **No PDF Output (Yet)**: Currently, the software does not support PDF output. Users wishing for this feature can request its future inclusion.
 
-In the project directory, you can run:
+## Usage Instructions
+1. **Selecting a Paragraph**: Use the section selector to choose the paragraph you want to edit.
+2. **Editing Features**: Apply text styles, insert annotations, hyperlinks, and use code blocks within your selected paragraph.
+3. **Device and Display Requirements**: Ensure your browser width is at least 1330px for the best experience.
+4. **Saving Work**: Regularly save your work within the software, as PDF export is not currently available.
 
-### `npm start`
+## System Requirements
+- Recommended Browser Width: 1330px or greater.
+- Compatible with most modern web browsers.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Support and Contact
+For any queries or support needs, please directly contact the developer at vik.h.dev@gmail.com. Your feedback and suggestions are highly appreciated.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Contributions and Feature Requests
+To contribute to the project or request new features like PDF export, please reach out to the developer.
 
-### `npm test`
+## License
+This software is licensed under [specify license here].
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Acknowledgments
+A heartfelt thank you to the Talmudic academic community and the software development contributors for making this project possible.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
