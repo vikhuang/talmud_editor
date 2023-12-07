@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/talmud_editor/static/css/main.3b367171.css",
+    "main.js": "/talmud_editor/static/js/main.b76976be.js",
+    "static/js/496.2c0192e0.chunk.js": "/talmud_editor/static/js/496.2c0192e0.chunk.js",
+    "static/media/list-ol.svg": "/talmud_editor/static/media/list-ol.14fef2e6f0e79b263d06.svg",
+    "static/media/chat-square-quote.svg": "/talmud_editor/static/media/chat-square-quote.33be1f551faf7cf853b0.svg",
+    "index.html": "/talmud_editor/index.html",
+    "static/media/6-square-fill.svg": "/talmud_editor/static/media/6-square-fill.4e2fb7382d28e7abdc40.svg",
+    "static/media/3-square-fill.svg": "/talmud_editor/static/media/3-square-fill.27fd5b080bdf360287ea.svg",
+    "static/media/pencil-fill.svg": "/talmud_editor/static/media/pencil-fill.4c640d95a61cb0764a83.svg",
+    "static/media/type-strikethrough.svg": "/talmud_editor/static/media/type-strikethrough.5d23c9047ed5de3d800c.svg",
+    "static/media/5-square-fill.svg": "/talmud_editor/static/media/5-square-fill.047c0eb9a14da6068fd8.svg",
+    "static/media/2-square-fill.svg": "/talmud_editor/static/media/2-square-fill.dc124e8792c793beaea7.svg",
+    "static/media/type-h2.svg": "/talmud_editor/static/media/type-h2.79f13fc5b4bd5009079a.svg",
+    "static/media/type-superscript.svg": "/talmud_editor/static/media/type-superscript.9513ce5c56576e224501.svg",
+    "static/media/type-bold.svg": "/talmud_editor/static/media/type-bold.b3bec3f33045771f9484.svg",
+    "static/media/list-ul.svg": "/talmud_editor/static/media/list-ul.06392a7729ef11b23ab1.svg",
+    "static/media/4-square-fill.svg": "/talmud_editor/static/media/4-square-fill.4ea15cfdcb46851e94c1.svg",
+    "static/media/text-paragraph.svg": "/talmud_editor/static/media/text-paragraph.f4fabf6b2832a9910918.svg",
+    "static/media/text-center.svg": "/talmud_editor/static/media/text-center.03faef7b924b1d56f352.svg",
+    "static/media/text-right.svg": "/talmud_editor/static/media/text-right.9dc4cc6ef249d5da6f4e.svg",
+    "static/media/justify.svg": "/talmud_editor/static/media/justify.8c8fc219361a1fd76759.svg",
+    "static/media/text-left.svg": "/talmud_editor/static/media/text-left.bd29ab081ee9f6f7c26d.svg",
+    "static/media/link.svg": "/talmud_editor/static/media/link.7d2df934bfb1a5cbb4fb.svg",
+    "static/media/code.svg": "/talmud_editor/static/media/code.617835135fe5b8cd2640.svg",
+    "static/media/arrow-counterclockwise.svg": "/talmud_editor/static/media/arrow-counterclockwise.48745dc8e6d9b1a2f8ec.svg",
+    "static/media/arrow-clockwise.svg": "/talmud_editor/static/media/arrow-clockwise.2ba775456dd603357519.svg",
+    "static/media/type-italic.svg": "/talmud_editor/static/media/type-italic.d3971b39b0fe39a09b1b.svg",
+    "static/media/type-underline.svg": "/talmud_editor/static/media/type-underline.b41f84ace38d530f30b9.svg",
+    "static/media/1-square-fill.svg": "/talmud_editor/static/media/1-square-fill.84b4fc9d67e387756971.svg",
+    "static/media/chevron-down.svg": "/talmud_editor/static/media/chevron-down.8624f04faf16b2d07c00.svg",
+    "static/media/type-h1.svg": "/talmud_editor/static/media/type-h1.4c6eb94d40e1ad820dda.svg",
+    "main.3b367171.css.map": "/talmud_editor/static/css/main.3b367171.css.map",
+    "main.b76976be.js.map": "/talmud_editor/static/js/main.b76976be.js.map",
+    "496.2c0192e0.chunk.js.map": "/talmud_editor/static/js/496.2c0192e0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3b367171.css",
+    "static/js/main.b76976be.js"
+  ]
+}
