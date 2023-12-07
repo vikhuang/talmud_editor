@@ -7,8 +7,9 @@ export const SectionSelector = (props) => {
           <div className='toolbar'>
             <p className='toolbar-info'>Section Selector</p>
                 <Divider />
-            {createArray(6).map((n,i) => (
-                <button key={i} className="toolbar-item spaced"
+            {createArray(5).map((n, i) => (
+                <button key={i} 
+                    className={`toolbar-item spaced ${props.essayFocused === i+1 ? 'selected' : ''}`}
                     onClick={() => essayHandler(i+1)}
                 >
                     <i className={`format essay${i+1}-icon`}></i>

@@ -1,5 +1,5 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { useCallback, useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
@@ -8,9 +8,6 @@ import {
   SELECTION_CHANGE_COMMAND,
   FORMAT_TEXT_COMMAND,
   FORMAT_ELEMENT_COMMAND,
-  BLUR_COMMAND,
-  FOCUS_COMMAND,
-  COMMAND_PRIORITY_LOW,
   $getSelection,
   $isRangeSelection,
   $createParagraphNode,
@@ -43,7 +40,7 @@ import {
   getCodeLanguages
 } from "@lexical/code";
 
-const LowPriority = 3;
+const LowPriority = 1;
 
 const supportedBlockTypes = new Set([
   "paragraph",
@@ -94,7 +91,7 @@ function FloatingLinkEditor({ editor }) {
   const [isEditMode, setEditMode] = useState(false);
   const [lastSelection, setLastSelection] = useState(null);
 
-  const updateLinkEditor = useCallback(() => {   
+  const updateLinkEditor = useCallback(() => {
     const selection = $getSelection();
     if ($isRangeSelection(selection)) {
       const node = getSelectedNode(selection);
@@ -270,7 +267,7 @@ function BlockOptionsDropdownList({
     if (toolbar !== null && dropDown !== null) {
       const { top, left } = toolbar.getBoundingClientRect();
       dropDown.style.top = `${top + 40}px`;
-      dropDown.style.left = `${left}px`;
+      dropDown.style.left = `${left + 80}px`;
     }
   }, [dropDownRef, toolbarRef]);
 
@@ -421,9 +418,6 @@ function BlockOptionsDropdownList({
 export default function ToolbarPlugin() {
   const [editor] = useLexicalComposerContext();
   const toolbarRef = useRef(null);
-  const activeElement = document.activeElement;
-  const [showToolbar, setShowToolbar] = useState(false);
-
   const [canUndo, setCanUndo] = useState(false);
   const [canRedo, setCanRedo] = useState(false);
   const [blockType, setBlockType] = useState("paragraph");
@@ -438,32 +432,8 @@ export default function ToolbarPlugin() {
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
   const [isStrikethrough, setIsStrikethrough] = useState(false);
+  const [isSuperscript, setIsSuperscript] = useState(false);
   const [isCode, setIsCode] = useState(false);
-
-  const useEditorFocus = () => {
-    const [hasFocus, setHasFocus] = useState(() => {
-      return (editor.getRootElement() === document.activeElement);
-    });
-    
-    useLayoutEffect(() => {
-      setHasFocus(editor.getRootElement() === document.activeElement);
-      return mergeRegister(
-        editor.registerCommand(FOCUS_COMMAND, () => {setShowToolbar(true)}, COMMAND_PRIORITY_LOW),
-        editor.registerCommand(BLUR_COMMAND, () => {setShowToolbar(false)}, COMMAND_PRIORITY_LOW),
-        
-      );
-    }, [editor]);
-    
-  }
-
-  if(activeElement.className === 'toolbar') {
-    console.log('TOOLBAR!');
-  }
-  
-  useEditorFocus();
-
-
-  
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -496,6 +466,7 @@ export default function ToolbarPlugin() {
       setIsItalic(selection.hasFormat("italic"));
       setIsUnderline(selection.hasFormat("underline"));
       setIsStrikethrough(selection.hasFormat("strikethrough"));
+      setIsSuperscript(selection.hasFormat('superscript'));
       setIsCode(selection.hasFormat("code"));
       setIsRTL($isParentElementRTL(selection));
 
@@ -568,7 +539,7 @@ export default function ToolbarPlugin() {
   }, [editor, isLink]);
 
   return (
-    <div className="toolbar" ref={toolbarRef} style={{visibility: showToolbar ? 'visible' : 'hidden'}}>
+    <div className="toolbar" ref={toolbarRef}>
       <button
         disabled={!canUndo}
         onClick={() => {
@@ -590,7 +561,6 @@ export default function ToolbarPlugin() {
         <i className="format redo" />
       </button>
       <Divider />
-      
       {supportedBlockTypes.has(blockType) && (
         <>
           <button
@@ -666,6 +636,17 @@ export default function ToolbarPlugin() {
             aria-label="Format Strikethrough"
           >
             <i className="format strikethrough" />
+          </button>
+          <button
+            onClick={() => {
+              editor.dispatchCommand(FORMAT_TEXT_COMMAND, "superscript");
+            }}
+            className={
+              "toolbar-item spaced " + (isSuperscript ? "active" : "")
+            }
+            aria-label="Format Superscript"
+          >
+            <i className="format superscript" />
           </button>
           <button
             onClick={() => {

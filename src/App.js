@@ -1,43 +1,59 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './App.css';
 import { SectionSelector } from './section-selector';
 import { Essay5, Essay6 } from './essay-third';
+import { Essay1 } from './essay-first';
 
 
 function App() {
   const [showDraftArea, setShowDraftArea] = useState(false);
   const [essayFocused, setEssayFocused] = useState(null);
+  
+  const [shapeOutside, setShapeOutside] = useState(''); 
+  const essay1Ref = useRef(null);
 
+  useEffect(() => {
+    if(essay1Ref.current) {
+      const rect = essay1Ref.current.getBoundingClientRect();
+      const insetShape = `inset(${rect.top}px ${rect.right}px ${rect.bottom}px ${rect.left}px)`;   
+      setShapeOutside(insetShape)
+      console.log(rect.width, rect.x, rect.y, rect.width, rect.height, rect.right, rect.bottom)
+    }
+  }, [essayFocused])
   
   return (
+    <>
     <div className="App">
       <div className='Header'>
-        <p className='Header_loveSec'>
-          For Michael
-        </p>
-        <div className='Header_title'>
-          Talmud 
-          <div className='Header_title_sub'> תַּלְמוּד‎ </div>
-          Layout Generator
+        <div className='Header_title' style={{fontWeight: 900}}>
+            Talmud
+            <div className='Header_title_sub'> תַּלְמוּד‎ </div>       
         </div>
+        <div className='Header_title'>Layout Generator</div>
       </div>
       <div className='preview'>
-        <SectionSelector onFocused={setEssayFocused} />
+        <SectionSelector onFocused={setEssayFocused} essayFocused={essayFocused}  />
         <div className='third_wrapper'>
-          <Essay5 onFocused={essayFocused}/>
-          <Essay6 onFocused={essayFocused}/>
+          <Essay5 onFocused={essayFocused} shapeHeight={shapeOutside} />
+          <Essay6 onFocused={essayFocused} shapeHeight={shapeOutside} />
         </div>
         <div className='first_wrapper'>
           <div className='essay1'>
-              qu’elle emprunte à ma pensée dont elle est un mode ; mas que telle idée contienne telle ou telle réalité objective plutôt qu’une autre, qu’elle emprunte à ma pensée dont elle est un mode ; mas que telle idée contienne telle ou telle réalité objective plutôt qu’une autre, cela, assurément, elle doit le tenir de quelque cause dans laquelle il y ait pour le moins autant de réalité formelle qu’elle en contient elle- même d’objective. En effet , si nous posons qu’il se rencontre dans l’idée quelque chose qui n’a pas été dans sa cause, elle le tient donc du néant ; or, pour imparfait que soit ce mode d’être par lequel une chose est à titre d’objet dans l’entendement par l’entremise d’une idée, il est pourtant sûr que ce n’est pas rien du tout, et par conséquent cela ne saurait provenir du néant.
+              <Essay1 onFocused={essayFocused} ref={essay1Ref}/>              
           </div>
-        </div>  
+        </div>   
       </div> 
-      
+       
       {/* <div className='draftArea' style={{visibility: showDraftArea ? 'visible' : 'hidden'}}>
           <Editor />
       </div> */}
     </div>
+    <div className="blur-overlay">
+      <div className='content'>
+        For the best user experience, it is recommended to use a supported device;<br/> screen resolution greater than 1280*800.
+      </div>
+    </div> 
+  </>
   );
 }
 

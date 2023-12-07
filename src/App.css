@@ -1,4 +1,6 @@
-
+body {
+  background-color:#ccc;
+}
 
 .draftArea {
   position: absolute;
@@ -11,45 +13,52 @@
 }
 
 .preview {
-  position: absolute;
+  position: relative;
   display: inline-block;
   text-align: center;
+  box-sizing: border-box;
   margin-top: 5rem;
+  margin-left: 3rem;
   border: #000 solid 1px;
-  visibility: visible;
+  border-radius: 0 0 1.5rem 1.5rem;
   width: 80%;
-  height: 120%;  
+  min-height: 150vh;
+  background-color: white;
 }
 
 .essay-selector {
-  position: relative;
-  height: 18px;
-  width: 18px;
+  position: fixed;
+  top: 1rem;
+  left: 160px;
+  
+  width: fit-content;
+  z-index: 10;
+}
+
+.preview > *:not(.essay-selector) {
+  margin-top: 18px; /* 替換 [Nav Bar 高度] 為實際的高度 */
 }
 
 .Header {
-  position: relative;
-  display: inline-block;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
   text-align: left;
-  top: 8px;
+  top: 1rem;
   left: 8px;
-  margin: 1rem;
-}
+  margin-bottom: calc(1rem + 1px);
+  z-index: 30;
+  max-width: min-content;
+  background-color: white;
 
-.Header_loveSec {
-  font-family: Helvetica, sans-serif;
-  font-weight: 100;
-  font-size: 0.5rem;
-  font-style: italic;
-  margin:  12px 4px;
 }
 
 .Header_title {
+  flex: 1;
   font-family: Helvetica, sans-serif;
-  font-weight: 900;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin: 4px;
-  max-width: min-content;
+  /* max-width: min-content; */
 }
 
 .Header_title_sub {
@@ -57,12 +66,13 @@
   color: rgba(0, 0, 0, 0.2);
 }
 
+
 .essay1 {
     position: absolute;
-    top: calc(5rem + 12px + 20%);
-    left: 38%;
+    top: calc(5rem + 12px + 25%);
+    left: 30vw;
     width: 25%;
-    font-size: 9px;
+    max-height: 40%;
     z-index: 2;
   
 }
@@ -78,7 +88,6 @@
 .essay3 {
   display: inline-block;
   width: 250px;
-  font-size: 9px;
   color: goldenrod;
   text-align: left;
   margin: 8px;
@@ -87,52 +96,47 @@
 
 .essay3_block_left {
   width: 50%;
-  height: 500px;
-  margin: 12px 12px 12px 0;
-  background-color: lightgray;
+  height: 80vh;
+  margin: 12px 0 12px 12px; 
   float: left;  
-  shape-outside: inset(35% 0 0 0);
-  clip-path: inset(35% 0 0 0);
 }
 
 .essay3_block_right {
   width: 50%;
-  height: 500px;
-  margin: 12px 0 12px 12px; 
-  background-color: lightgray;
+  height: 80vh;
+  margin: 12px 0 12px 12px;
   float: right;  
-  shape-outside: inset(35% 0 0 0);
-  clip-path: inset(35% 0 0 0);
+  /* shape-outside: inset(35% 0 0 0); */
+  /* clip-path: inset(30% 0 30% 0); */
 }
 
 .essay4 {
   position: relative;
   display: inline-block;
   width: fit-content;
-  max-width: 500px;
+  min-width: 480px;
+  max-width: 520px;
   margin: 16px;
   vertical-align: top;
   
 }
 
 .second_wrapper_left {
-  position: relative;
-  display: inline;
+  
   float: left;
   width: fit-content;
-  max-height: 700px;
+  max-height: 100vh;
   margin-top: 8rem;
-  shape-outside: inset(9rem 0 0 0);
+  /* shape-outside: inset(9rem 0 0 0); */
 
 }
 .second_wrapper_right {
-  position: relative;
-  display: inline;
+  
   float: right;
   width: fit-content;
-  max-height: 700px;
+  max-height: 100vh;
   margin-top: 8rem;
-  shape-outside: inset(9rem 0 0 0);
+  /* shape-outside: inset(9rem 0 0 0); */
 
 }
 
@@ -158,7 +162,7 @@
   color: darkgrey;
   overflow: hidden;
   position: absolute;
-  top: 0px;
+  top: -16px;
   left: 15px;
   user-select: none;
   pointer-events: none;
@@ -167,7 +171,8 @@
 .editor-input {
   min-height: 150px;
   /* resize: none; */
-  font-size: 9px;
+  font-size: 1em;
+  line-height: 1rem;
   caret-color: rgb(5, 5, 5);
   position: relative;
   tab-size: 1;
@@ -192,7 +197,7 @@
   /* max-width: 600px; */
   color: #000;
   position: relative;
-  line-height: 10px;
+  /* line-height: 10px; */
   font-size: 10px;
   font-weight: 400;
   text-align: left;
@@ -201,9 +206,10 @@
 }
 
 .editor-toolbar {
-  position: absolute;
-  z-index: 2;
-  top: 5rem;
+  position: fixed;
+  z-index: 20;
+  top: 1rem;
+  left: 40vw;
 }
 
 .editor-text-essay {
@@ -236,6 +242,8 @@
 .editor-text-underlineStrikethrough {
   text-decoration: underline line-through;
 }
+
+
 
 .editor-text-code {
   background-color: rgb(240, 242, 245);
@@ -487,8 +495,8 @@ pre::-webkit-scrollbar-thumb {
 .toolbar-info {
   display: flex;
   line-height: normal;
-  padding: 4px;
-  font-size: 0.5rem;
+  font-size: 12px;
+  padding: 0 8px;
 }
 
 .toolbar button.toolbar-item {
@@ -509,7 +517,26 @@ pre::-webkit-scrollbar-thumb {
   margin-right: 2px;
 }
 
+.toolbar-item.spaced {
+  opacity: 0.5; 
+}
+
+.toolbar-item.spaced.selected {
+  opacity: 1; 
+}
+
 .toolbar button.toolbar-item i.format {
+  background-size: contain;
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  margin-top: 2px;
+  vertical-align: -0.25em;
+  display: flex;
+  opacity: 0.6;
+}
+
+.essay-selector .toolbar button.toolbar-item i.format {
   background-size: contain;
   display: inline-block;
   height: 18px;
@@ -660,7 +687,8 @@ i.chevron-down {
 .dropdown {
   z-index: 5;
   display: block;
-  position: absolute;
+  position: fixed;
+  left: 600px;
   box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
     inset 0 0 0 1px rgba(255, 255, 255, 0.5);
   border-radius: 8px;
@@ -867,6 +895,11 @@ i.strikethrough {
   background-image: url(../public/images/icons/type-strikethrough.svg);
 }
 
+i.superscript {
+  background-image: url(../public/images/icons/type-superscript.svg);
+}
+
+
 i.code {
   background-image: url(../public/images/icons/code.svg);
 }
@@ -913,4 +946,42 @@ i.essay5-icon {
 
 i.essay6-icon {
   background-image: url(../public/images/icons/6-square-fill.svg);
+}
+
+@media screen and (max-width: 1280px) {
+  .preview {
+    display: none;
+  }
+
+  .blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;    
+  }
+
+  .blur-overlay .content {
+    width: 70vw;
+    color:#444;
+    font-size: 1rem;    
+    line-height: 1.5rem;
+    
+  }
+
+  .App {
+    filter: blur(5px);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .blur-overlay .content {
+    display: none;
+  }
 }
