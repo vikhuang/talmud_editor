@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/talmud_editor/static/css/main.bc8d30bf.css",
-    "main.js": "/talmud_editor/static/js/main.b76976be.js",
+    "main.css": "/talmud_editor/static/css/main.37d7664f.css",
+    "main.js": "/talmud_editor/static/js/main.1953358a.js",
     "static/js/496.2c0192e0.chunk.js": "/talmud_editor/static/js/496.2c0192e0.chunk.js",
     "static/media/list-ol.svg": "/talmud_editor/static/media/list-ol.14fef2e6f0e79b263d06.svg",
     "static/media/chat-square-quote.svg": "/talmud_editor/static/media/chat-square-quote.33be1f551faf7cf853b0.svg",
@@ -31,12 +31,12 @@
     "static/media/1-square-fill.svg": "/talmud_editor/static/media/1-square-fill.84b4fc9d67e387756971.svg",
     "static/media/chevron-down.svg": "/talmud_editor/static/media/chevron-down.8624f04faf16b2d07c00.svg",
     "static/media/type-h1.svg": "/talmud_editor/static/media/type-h1.4c6eb94d40e1ad820dda.svg",
-    "main.bc8d30bf.css.map": "/talmud_editor/static/css/main.bc8d30bf.css.map",
-    "main.b76976be.js.map": "/talmud_editor/static/js/main.b76976be.js.map",
+    "main.37d7664f.css.map": "/talmud_editor/static/css/main.37d7664f.css.map",
+    "main.1953358a.js.map": "/talmud_editor/static/js/main.1953358a.js.map",
     "496.2c0192e0.chunk.js.map": "/talmud_editor/static/js/496.2c0192e0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc8d30bf.css",
-    "static/js/main.b76976be.js"
+    "static/css/main.37d7664f.css",
+    "static/js/main.1953358a.js"
   ]
 }
