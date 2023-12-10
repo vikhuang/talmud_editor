@@ -948,7 +948,7 @@ i.essay6-icon {
   background-image: url(../public/images/icons/6-square-fill.svg);
 }
 
-@media screen and (max-width: 1330px) {
+@media screen and (max-width: 1450px) {
   .preview {
     display: none;
   }
@@ -980,7 +980,7 @@ i.essay6-icon {
   }
 }
 
-@media screen and (min-width: 1330px) {
+@media screen and (min-width: 1450px) {
   .blur-overlay .content {
     display: none;
   }

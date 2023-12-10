@@ -30,7 +30,5 @@ To contribute to the project or request new features like PDF export, please rea
 ## License
 This software is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0). This license allows for both modification and commercial use, as long as the original author, Vik Huang, is credited. For more information about this license, please visit [https://creativecommons.org/licenses/by-sa/4.0/](https://creativecommons.org/licenses/by-sa/4.0/).
 
-## Acknowledgments
-A heartfelt thank you to the Talmudic academic community and the software development contributors for making this project possible.
 
 ---
