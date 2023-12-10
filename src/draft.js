@@ -111,7 +111,7 @@ const Editor = forwardRef((props, ref) => {
   const placeholder = props.essayNo;
 
   const layer = props.essayNo.layer
-  const maxLength = layer === 1 ? 800 : (layer === 2  ? 1600 : (layer === 3 ? 3500 : 0))
+  const maxLength = layer === 1 ? 750 : (layer === 2  ? 1300 : (layer === 3 ? 3300 : 0))
 
 
 
